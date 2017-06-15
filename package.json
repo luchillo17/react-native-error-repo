@@ -2,9 +2,22 @@
   "name": "InsuranceCalculator",
   "version": "0.1.0",
   "private": true,
+  "dependencies": {
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.44.0"
+  },
   "devDependencies": {
-    "jest-expo": "~1.0.1",
-    "react-test-renderer": "16.0.0-alpha.6"
+    "@types/jest": "^19.2.4",
+    "@types/react": "^15.0.28",
+    "@types/react-native": "^0.44.10",
+    "babel-jest": "^20.0.3",
+    "babel-preset-react-native": "^2.0.0",
+    "concurrently": "^3.4.0",
+    "jest": "^20.0.4",
+    "react-test-renderer": "16.0.0-alpha.6",
+    "rimraf": "^2.6.1",
+    "tslint": "^5.4.3",
+    "typescript": "^2.3.4"
   },
   "scripts": {
     "tsc": "tsc",
@@ -17,20 +30,20 @@
     "start:android": "npm run build && concurrently -r 'npm run watch' 'react-native run-android'",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "jest --coverage"
   },
   "jest": {
-    "preset": "jest-expo"
-  },
-  "dependencies": {
-    "@types/jest": "^19.2.4",
-    "@types/react": "^15.0.28",
-    "@types/react-native": "^0.44.10",
-    "concurrently": "^3.4.0",
-    "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.0",
-    "rimraf": "^2.6.1",
-    "tslint": "^5.4.3",
-    "typescript": "^2.3.4"
+    "preset": "react-native",
+    "testRegex": "artifacts/.+\\.(test|spec).js$",
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "artifacts/**/*.js",
+      "!artifacts/**/*.spec.js",
+      "!artifacts/**/*.index.js"
+    ]
   }
 }
